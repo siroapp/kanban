@@ -23,7 +23,7 @@ module.exports = {
     clean: true,
   },
   resolve: {
-    extensions: [".ts", "tsx", ".js", "json"]
+    extensions: [".ts", ".tsx", ".js", ".json"]
   },
   plugins: [new HtmlWebpackPlugin({template: 'src/index.html'})],
 };
