@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import * as color from './color'
 import { Button, ConfirmButton } from './Button'
@@ -22,15 +22,31 @@ export function InputForm({
     onConfirm?.()
   }
 
+  const ref = useRef<HTMLTextAreaElement>(null)
+
+  useEffect(
+    () => {
+      const el = ref.current
+      if (!el) return
+
+      const { borderTopWidth, borderBottomWidth } = getComputedStyle(el)
+      el.style.height = 'auto' // 一度autoにしないと高さが縮まなくなる
+      el.style.height = `calc(${borderTopWidth} + ${el.scrollHeight}px + ${borderBottomWidth})`
+    },
+    // 内容が変わるたびに高さを再計算
+    [value],
+  )
+
   return (
     <Container className={className}>
       <Input
+        ref={ref}
         autoFocus
         placeholder="Enter a note"
         value={value}
         onChange={ev => onChange?.(ev.currentTarget.value)}
         onKeyDown={ev => {
-          if(!((ev.metaKey || ev.ctrlKey) && ev.key === 'Enter')) return
+          if (!((ev.metaKey || ev.ctrlKey) && ev.key === 'Enter')) return
           handleConfirm()
         }}
       />
