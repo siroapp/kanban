@@ -15,7 +15,7 @@ export function Column({
     text?: string
   }[]
 }) {
-  const totalCount = cards.length;
+  const totalCount = cards.length
 
   const [text, setText] = useState('')
 
@@ -29,7 +29,7 @@ export function Column({
       <Header>
         <CountBadge>{totalCount}</CountBadge>
         <ColumnName>{title}</ColumnName>
-        
+
         <AddButton onClick={toggleInput} />
       </Header>
 
@@ -90,7 +90,7 @@ const ColumnName = styled.div`
 
 const AddButton = styled.button.attrs({
   type: 'button',
-  children: <PlusIcon />
+  children: <PlusIcon />,
 })`
   margin-left: auto;
   color: ${color.Black};

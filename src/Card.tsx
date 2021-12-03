@@ -66,7 +66,7 @@ const Text = styled.span`
 
 const Link = styled.a.attrs({
   target: '_blank',
-  rel: 'noopener noreferrer'
+  rel: 'noopener noreferrer',
 })`
   color: ${color.Blue};
   font-size: 14px;
