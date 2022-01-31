@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const DotenvWebpackPlugin = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -11,7 +12,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx$/,
+        test: /\.(ts|tsx)$/,
         use: 'ts-loader',
       },
     ],
@@ -25,5 +26,8 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"]
   },
-  plugins: [new HtmlWebpackPlugin({template: 'src/index.html'})],
+  plugins: [
+    new HtmlWebpackPlugin({template: 'src/index.html'}),
+    new DotenvWebpackPlugin()
+  ],
 };
